@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research | Time Series Forecasting with GANs</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --accent-blue: #7000ff;
+            --accent-cyan: #00f2ff;
+        }
+
+        body {
+            background-color: #020617;
+            color: #f8fafc;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .research-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Back Button */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 3rem;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: var(--accent-cyan);
+        }
+
+        /* Hero */
+        .hero-section {
+            margin-bottom: 4rem;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+        }
+
+        .hero-section h1 .highlight {
+            color: var(--accent-blue);
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 4rem;
+        }
+
+        .meta-group h5 {
+            color: #64748b;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.5rem;
+        }
+
+        .meta-group p {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        /* Abstract */
+        .abstract-box {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 2rem;
+            padding: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .abstract-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .abstract-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(112, 0, 255, 0.1);
+            border: 1px solid rgba(112, 0, 255, 0.2);
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-blue);
+        }
+
+        .abstract-header h2 {
+            font-size: 1.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .abstract-content p {
+            color: #94a3b8;
+            line-height: 1.8;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Highlights */
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 5rem;
+        }
+
+        .h-card {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .h-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-blue);
+        }
+
+        .h-icon-circle {
+            width: 50px;
+            height: 50px;
+            background: rgba(112, 0, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--accent-blue);
+        }
+
+        .h-card h3 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .h-card p {
+            font-size: 0.75rem;
+            color: #64748b;
+        }
+
+        /* Findings & Methodology */
+        .details-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            margin-bottom: 5rem;
+        }
+
+        .split-col h2 {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.5rem;
+            margin-bottom: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .split-col h2::before {
+            content: '';
+            width: 30px;
+            height: 4px;
+            background: var(--accent-blue);
+            border-radius: 2px;
+        }
+
+        .list-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            color: #cbd5e1;
+            line-height: 1.5;
+        }
+
+        .list-icon {
+            flex-shrink: 0;
+            color: var(--accent-blue);
+        }
+
+        /* Tags */
+        .research-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .tag {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.6rem 1.2rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #94a3b8;
+        }
+
+        @media (max-width: 992px) {
+            .hero-meta { gap: 2rem; flex-wrap: wrap; }
+            .highlights-grid { grid-template-columns: repeat(2, 1fr); }
+            .details-split { grid-template-columns: 1fr; gap: 3rem; }
+            .hero-section h1 { font-size: 2.5rem; }
+        }
+
+        @media (max-width: 600px) {
+            .highlights-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas-bg"></canvas>
+    
+    <div class="research-wrapper">
+        <!-- Back Link -->
+        <a href="index.html" class="back-link">
+            <i data-lucide="arrow-left"></i> Back to Portfolio
+        </a>
+
+        <!-- Hero Section -->
+        <header class="hero-section">
+            <h1>Enhancing <span class="highlight">Time Series</span> <br> Forecasting Using <span class="highlight">GANs</span></h1>
+            
+            <div class="hero-meta">
+                <div class="meta-group">
+                    <h5>Author</h5>
+                    <p>Neelanjan Dutta</p>
+                </div>
+                <div class="meta-group">
+                    <h5>Affiliation</h5>
+                    <p>CHRIST (Deemed to be University)</p>
+                </div>
+                <div class="meta-group">
+                    <h5>Dataset</h5>
+                    <p>TRY/USD Exchange Rate (Yahoo Finance)</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Abstract Section -->
+        <section class="abstract-box reveal">
+            <div class="abstract-header">
+                <div class="abstract-icon"><i data-lucide="book-open"></i></div>
+                <h2>Abstract</h2>
+            </div>
+            <div class="abstract-content">
+                <p>This study focuses on forecasting low-liquidity financial assets using multiple deep learning factors. The challenge lies in accurately modeling the complex and interconnected relationships between these variables in sparse and volatile financial markets. Traditional models often fail to capture these dynamics effectively.</p>
+                <p>To address this, a hybrid machine learning approach is proposed, combining statistical and generative models. LSTM is used for capturing temporal dependencies, while TimeGAN handles synthetic sequence generation to augment training data. Ensemble techniques are used to improve prediction performance in sparse data scenarios.</p>
+                <p>The results demonstrate that TimeGAN-enhanced models significantly outperform standalone individual models, achieving lower prediction errors (RMSE reduced from 0.0009 to 0.0002) and near-perfect accuracy (R² improved to 0.9921). This approach provides a more reliable solution for real-world financial forecasting and decision-making.</p>
+            </div>
+        </section>
+
+        <!-- Highlights Grid -->
+        <div class="highlights-grid">
+            <div class="h-card reveal" style="transition-delay: 0.1s;">
+                <div class="h-icon-circle"><i data-lucide="layers"></i></div>
+                <h3>Hybrid Models</h3>
+                <p>Advanced GAN + LSTM</p>
+            </div>
+            <div class="h-card reveal" style="transition-delay: 0.2s;">
+                <div class="h-icon-circle"><i data-lucide="database"></i></div>
+                <h3>Sequential Data</h3>
+                <p>Augmented Feature Set</p>
+            </div>
+            <div class="h-card reveal" style="transition-delay: 0.3s;">
+                <div class="h-icon-circle"><i data-lucide="line-chart"></i></div>
+                <h3>Forecasting</h3>
+                <p>Financial Precision</p>
+            </div>
+            <div class="h-card reveal" style="transition-delay: 0.4s;">
+                <div class="h-icon-circle"><i data-lucide="cpu"></i></div>
+                <h3>ML + Generative</h3>
+                <p>Hybrid Deep Learning</p>
+            </div>
+        </div>
+
+        <!-- Key Details Split -->
+        <div class="details-split">
+            <!-- Key Findings -->
+            <div class="split-col reveal">
+                <h2>Key Findings</h2>
+                <div class="list-item">
+                    <i data-lucide="check-circle-2" class="list-icon"></i>
+                    <p>TimeGAN models outperform traditional and standalone machine learning models</p>
+                </div>
+                <div class="list-item">
+                    <i data-lucide="check-circle-2" class="list-icon"></i>
+                    <p>TimeGAN + LSTM achieves highest accuracy and lowest RMSE (0.0002)</p>
+                </div>
+                <div class="list-item">
+                    <i data-lucide="check-circle-2" class="list-icon"></i>
+                    <p>LSTM baseline is limited in capturing complex low-liquidity relationships</p>
+                </div>
+                <div class="list-item">
+                    <i data-lucide="check-circle-2" class="list-icon"></i>
+                    <p>Synthetic data augmentation improves prediction reliability in volatile markets</p>
+                </div>
+                <div class="list-item">
+                    <i data-lucide="check-circle-2" class="list-icon"></i>
+                    <p>Hybrid architecture effectively captures both long-range trends and short-term variance</p>
+                </div>
+            </div>
+
+            <!-- Methodology -->
+            <div class="split-col reveal" style="transition-delay: 0.2s;">
+                <h2>Methodology</h2>
+                <div class="list-item">
+                    <i data-lucide="dot" class="list-icon"></i>
+                    <p>Multivariate time-series analysis and cleaning</p>
+                </div>
+                <div class="list-item">
+                    <i data-lucide="dot" class="list-icon"></i>
+                    <p>LSTM base model development for temporal learning</p>
+                </div>
+                <div class="list-item">
+                    <i data-lucide="dot" class="list-icon"></i>
+                    <p>TimeGAN implementation for synthetic sequence generation</p>
+                </div>
+                <div class="list-item">
+                    <i data-lucide="dot" class="list-icon"></i>
+                    <p>Generative modeling for data augmentation in sparse markets</p>
+                </div>
+                <div class="list-item">
+                    <i data-lucide="dot" class="list-icon"></i>
+                    <p>Hybrid ensemble evaluation (TimeGAN + LSTM)</p>
+                </div>
+                <div class="list-item">
+                    <i data-lucide="dot" class="list-icon"></i>
+                    <p>Feature engineering and performance metric tracking</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tags Footer -->
+        <footer class="research-tags reveal">
+            <span class="tag">Time Series Forecasting</span>
+            <span class="tag">Hybrid Models</span>
+            <span class="tag">TimeGAN</span>
+            <span class="tag">LSTM</span>
+            <span class="tag">Deep Learning</span>
+            <span class="tag">Financial Analytics</span>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+        
+        // Reveal animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
