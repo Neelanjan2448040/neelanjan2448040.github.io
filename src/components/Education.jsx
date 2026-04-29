@@ -1,6 +1,6 @@
 import Timeline from './Timeline';
-import christLogo from '../assets/christ university.png';
-import assamLogo from '../assets/assam university.jpg';
+import christLogo from '../assets/christ_university.png';
+import assamLogo from '../assets/assam_university.jpg';
 
 const educationData = [
   {
