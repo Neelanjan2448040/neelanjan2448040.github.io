@@ -75,6 +75,27 @@ const Hero = () => {
           </motion.div>
         </div>
       </div>
+      
+      {/* Stats Banner */}
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.2, duration: 0.8 }}
+        style={{ width: '100%', maxWidth: '1000px', margin: '4rem auto 0', padding: '2rem', display: 'flex', justifyContent: 'space-around', background: 'var(--card-bg)', backdropFilter: 'blur(12px)', border: '1px solid var(--glass-border)', borderRadius: '1rem', boxShadow: '0 10px 30px rgba(0,0,0,0.2)' }}
+      >
+        <div style={{ textAlign: 'center' }}>
+          <h3 style={{ fontSize: '2.5rem', color: 'var(--primary)', marginBottom: '0.2rem' }}>85%+</h3>
+          <p style={{ color: 'var(--text-dim)', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px' }}>Prediction Accuracy</p>
+        </div>
+        <div style={{ textAlign: 'center' }}>
+          <h3 style={{ fontSize: '2.5rem', color: 'var(--primary)', marginBottom: '0.2rem' }}>50%</h3>
+          <p style={{ color: 'var(--text-dim)', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px' }}>Process Time Reduction</p>
+        </div>
+        <div style={{ textAlign: 'center' }}>
+          <h3 style={{ fontSize: '2.5rem', color: 'var(--primary)', marginBottom: '0.2rem' }}>7+</h3>
+          <p style={{ color: 'var(--text-dim)', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px' }}>Deployed AI Models</p>
+        </div>
+      </motion.div>
     </section>
   );
 };

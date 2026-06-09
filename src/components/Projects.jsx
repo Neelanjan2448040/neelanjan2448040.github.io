@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Code, ExternalLink } from 'lucide-react';
+import Tilt from 'react-parallax-tilt';
 
 const projects = [
   {
@@ -71,33 +72,34 @@ const ProjectCard = ({ project }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: project.delay }}
-      whileHover={{ y: -10 }}
-      className="glass project-card-v3"
+      style={{ height: '100%' }}
     >
-      <div className="project-header">
-        <span className="project-emoji">{project.emoji}</span>
-        <Link to={`/project/${project.title}`} className="project-title-link">
-          <h3>{project.title}</h3>
-        </Link>
-      </div>
-      <p className="project-desc">{project.desc}</p>
-      
-      <div className="tech-stack">
-        {project.tech.map((t, i) => (
-          <span key={i} className="tech-badge">{t}</span>
-        ))}
-      </div>
-      
-      <div className="project-card-actions">
-        <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn-icon-text">
-          <Code size={18} /> Github
-        </a>
-        {project.demo && (
-          <a href={project.demo} target="_blank" rel="noopener noreferrer" className="btn-icon-text demo">
-            <ExternalLink size={18} /> Demo
+      <Tilt glareEnable={true} glareMaxOpacity={0.15} scale={1.02} transitionSpeed={2500} className="glass project-card-v3" style={{ height: '100%' }}>
+        <div className="project-header">
+          <span className="project-emoji">{project.emoji}</span>
+          <Link to={`/project/${project.title}`} className="project-title-link">
+            <h3>{project.title}</h3>
+          </Link>
+        </div>
+        <p className="project-desc">{project.desc}</p>
+        
+        <div className="tech-stack">
+          {project.tech.map((t, i) => (
+            <span key={i} className="tech-badge">{t}</span>
+          ))}
+        </div>
+        
+        <div className="project-card-actions">
+          <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn-icon-text">
+            <Code size={18} /> Github
           </a>
-        )}
-      </div>
+          {project.demo && (
+            <a href={project.demo} target="_blank" rel="noopener noreferrer" className="btn-icon-text demo">
+              <ExternalLink size={18} /> Demo
+            </a>
+          )}
+        </div>
+      </Tilt>
     </motion.div>
   );
 };
