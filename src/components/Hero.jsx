@@ -1,8 +1,17 @@
 import { motion } from 'framer-motion';
-import { Download, Mail, Send } from 'lucide-react';
+import { Download, Mail, Send, CheckCircle } from 'lucide-react';
+import { useState } from 'react';
 import photo from '../assets/photo.jpeg';
 
 const Hero = () => {
+  const [copied, setCopied] = useState(false);
+  const handleCopyEmail = (e) => {
+    e.preventDefault();
+    navigator.clipboard.writeText("neelanjandutta01@gmail.com");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
     <section id="hero" className="section-padding" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingTop: '120px' }}>
       <div className="container">
@@ -55,9 +64,10 @@ const Hero = () => {
               <a href="/Resume.pdf" target="_blank" className="btn-primary-hero">
                 <Download size={20} /> Download CV
               </a>
-              <a href="mailto:neelanjandutta01@gmail.com" className="btn-outline-hero">
-                <Mail size={20} /> Contact Me
-              </a>
+              <button onClick={handleCopyEmail} className="btn-outline-hero" style={{ background: copied ? 'rgba(16, 185, 129, 0.1)' : 'transparent', borderColor: copied ? 'var(--secondary)' : 'var(--glass-border)' }}>
+                {copied ? <CheckCircle size={20} color="var(--secondary)" /> : <Mail size={20} />}
+                {copied ? <span style={{color: 'var(--secondary)'}}>Email Copied!</span> : 'Contact Me'}
+              </button>
               <a href="#contact" className="btn-outline-hero">
                 <Send size={20} /> Let's Talk
               </a>

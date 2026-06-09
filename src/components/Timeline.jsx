@@ -107,7 +107,7 @@ const Timeline = ({ items, title, subtitle }) => {
               bottom: 0, 
               left: '50%', 
               width: '4px', 
-              background: 'var(--secondary)', 
+              background: 'linear-gradient(to bottom, transparent, var(--primary), var(--secondary))', 
               marginLeft: '-2px', 
               transformOrigin: 'top', 
               scaleY: scaleY, 
@@ -117,10 +117,27 @@ const Timeline = ({ items, title, subtitle }) => {
             }} 
             className="animated-timeline-line"
           />
+          {/* Moving Laser Tip */}
+          <motion.div
+            style={{
+              position: 'absolute',
+              left: '50%',
+              width: '12px',
+              height: '12px',
+              marginLeft: '-6px',
+              backgroundColor: '#fff',
+              boxShadow: '0 0 15px 5px var(--secondary), 0 0 30px 10px var(--primary)',
+              borderRadius: '50%',
+              zIndex: 3,
+              top: useTransform(scrollYProgress, [0, 1], ['0%', '100%'])
+            }}
+            className="timeline-laser-tip"
+          />
           <style>{`
             .timeline::after { display: none !important; }
             @media (max-width: 768px) {
               .animated-timeline-line { left: 31px !important; }
+              .timeline-laser-tip { left: 31px !important; }
               .timeline-dot { left: -39px !important; right: auto !important; }
             }
           `}</style>
