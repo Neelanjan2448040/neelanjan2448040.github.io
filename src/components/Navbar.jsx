@@ -38,7 +38,6 @@ const Navbar = ({ theme, toggleTheme }) => {
         </ul>
 
         <div className="nav-actions">
-          <a href="#contact" className="btn-nav">Let's Talk</a>
           <button className="mobile-toggle" onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
