@@ -1,7 +1,28 @@
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Code, ExternalLink, Cpu, Layout, Layers, ShieldCheck } from 'lucide-react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import mermaid from 'mermaid';
+
+const Mermaid = ({ chart, id }) => {
+  const [svgInfo, setSvgInfo] = useState('');
+  
+  useEffect(() => {
+    mermaid.initialize({ startOnLoad: false, theme: 'dark', securityLevel: 'loose' });
+    const renderChart = async () => {
+      try {
+        const safeId = id.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
+        const { svg } = await mermaid.render(`mermaid-${safeId}-${Math.random().toString(36).substring(7)}`, chart);
+        setSvgInfo(svg);
+      } catch (e) {
+        console.error('Mermaid render error:', e);
+      }
+    };
+    if (chart) renderChart();
+  }, [chart, id]);
+
+  return <div style={{width: '100%', overflowX: 'auto', display: 'flex', justifyContent: 'center'}} dangerouslySetInnerHTML={{ __html: svgInfo }} />;
+};
 
 const projectsData = {
   "Financial Econometrics Dashboard": {
@@ -10,7 +31,17 @@ const projectsData = {
     desc: "A scalable financial analytics platform built to perform variance analysis, time-series forecasting, and automated KPI monitoring for real-time business decision-making.",
     tech: ["Python", "Streamlit", "Plotly", "Forecasting", "Pandas"],
     github: "https://github.com/Neelanjan2448040",
-    architecture: "Financial Data Intake -> Time-Series Modeling -> Variance Analysis Engine -> Interactive Dashboard",
+    mermaidGraph: `graph TD
+    User([User]) --> Dash[Streamlit Dashboard]
+    Dash --> Engine[Variance Analysis Engine]
+    Dash --> Forecast[Time-Series Modeling]
+    Engine --> DataIntake[Financial Data Intake]
+    Forecast --> DataIntake
+    DataIntake --> Pandas[(Pandas / Data Lake)]
+    Pandas --> DataIntake
+    style Dash fill:#020617,stroke:#00f2ff,stroke-width:2px,color:#fff
+    style Engine fill:#020617,stroke:#aa3bff,stroke-width:2px,color:#fff
+    style Forecast fill:#020617,stroke:#ff3b7c,stroke-width:2px,color:#fff`,
     details: [
       "Business Problem: Manual financial reporting and forecasting is slow and prone to errors. Stakeholders need real-time, accurate variance analysis.",
       "Techniques Used: Time-series forecasting, automated variance calculation, and descriptive financial analytics.",
@@ -25,7 +56,18 @@ const projectsData = {
     tech: ["Python", "Streamlit", "NLP", "Semantic Search"],
     github: "https://github.com/Neelanjan2448040/PaperScout-Topic-Aware-Academic-Paper-Recommender",
     demo: "https://paperscout-topic-aware-academic-paper-recommender.streamlit.app/",
-    architecture: "Multi-Source API Integration -> Semantic Embedding (LLM) -> FAISS Vector Search -> Streamlit Frontend",
+    mermaidGraph: `graph TD
+    Researcher([Researcher]) --> Frontend[Streamlit Frontend]
+    Frontend --> NLP[NLP Pipeline & Semantic Embedding]
+    NLP --> API[Multi-Source API Integration]
+    API --> PubMed(PubMed)
+    API --> arXiv(arXiv)
+    API --> CrossRef(CrossRef)
+    NLP --> VectorDB[(FAISS Vector Search)]
+    VectorDB --> NLP
+    style Frontend fill:#020617,stroke:#00f2ff,stroke-width:2px,color:#fff
+    style NLP fill:#020617,stroke:#aa3bff,stroke-width:2px,color:#fff
+    style VectorDB fill:#020617,stroke:#ff3b7c,stroke-width:2px,color:#fff`,
     details: [
       "Business Problem: Researchers face massive information overload and struggle to find highly relevant literature efficiently.",
       "Techniques Used: Topic-aware semantic similarity mapping, natural language processing, and high-dimensional vector search.",
@@ -39,7 +81,17 @@ const projectsData = {
     desc: "A multimodal computer vision and RAG-powered nutrition assistant providing real-time dietary insights. Drives user value by delivering accurate, personalized macro-nutrient analysis.",
     tech: ["RAG", "EffNet", "Qwen 2.5", "FAISS"],
     github: "https://github.com/Aaditya235-design/NutriSage",
-    architecture: "Image Capture -> EfficientNet-B0 (Feature Extraction) -> Qwen 2.5 LLM -> RAG Nutrition Retrieval -> Response Generation",
+    mermaidGraph: `graph TD
+    User([User]) --> App[Web Application]
+    App --> CV[EfficientNet-B0<br/>Feature Extraction]
+    CV --> RAG[RAG Nutrition Retrieval]
+    RAG --> DB[(FAISS Vector DB)]
+    DB --> RAG
+    RAG --> LLM[Qwen 2.5 LLM<br/>Response Generation]
+    LLM --> App
+    style App fill:#020617,stroke:#00f2ff,stroke-width:2px,color:#fff
+    style CV fill:#020617,stroke:#aa3bff,stroke-width:2px,color:#fff
+    style LLM fill:#020617,stroke:#ff3b7c,stroke-width:2px,color:#fff`,
     details: [
       "Business Problem: Users lack immediate, accurate nutritional breakdowns of their meals to maintain healthy diets.",
       "Techniques Used: Multimodal feature extraction (Computer Vision) coupled with Retrieval-Augmented Generation (RAG) for factual accuracy.",
@@ -53,7 +105,16 @@ const projectsData = {
     desc: "A highly scalable AI recruitment platform automating candidate screening and role matching using vector search, reducing administrative screening time by over 50%.",
     tech: ["Python", "ML", "NLP", "FAISS"],
     github: "https://github.com/Neelanjan2448040/LakshayAI",
-    architecture: "Resume Parsing -> Skill Matching Algorithm -> Job Similarity Engine (FAISS) -> Portal Frontend",
+    mermaidGraph: `graph TD
+    Candidate([Candidate]) --> Portal[Portal Frontend]
+    Portal --> Parser[NLP Resume Parsing]
+    Parser --> Matcher[Weighted Skill Matching]
+    Matcher --> FAISS[(Job Similarity Engine FAISS)]
+    FAISS --> Matcher
+    Matcher --> Portal
+    style Portal fill:#020617,stroke:#00f2ff,stroke-width:2px,color:#fff
+    style Parser fill:#020617,stroke:#aa3bff,stroke-width:2px,color:#fff
+    style FAISS fill:#020617,stroke:#ff3b7c,stroke-width:2px,color:#fff`,
     details: [
       "Business Problem: Manual candidate screening is highly subjective and inefficient, causing delays in matching talent with the right roles.",
       "Techniques Used: NLP for information extraction, weighted skill matching algorithms, and semantic similarity scoring.",
@@ -68,7 +129,19 @@ const projectsData = {
     tech: ["RAG", "LangChain", "Groq", "Streamlit"],
     github: "https://github.com/Neelanjan2448040/MediGuide-AI",
     demo: "https://mediguide-ai-5c6mvgqmktcwkwvtuckwhn.streamlit.app/",
-    architecture: "Document Upload -> LangChain Processing -> Groq Inference Engine -> Structured Medical Insights",
+    mermaidGraph: `graph TD
+    Patient([User/Patient]) --> App[Streamlit Interface]
+    App --> Upload[Document Upload Handler]
+    Upload --> LC[LangChain Processing & RAG]
+    LC --> DB[(Private Vector DB)]
+    DB --> LC
+    LC --> Groq[Groq Inference Engine]
+    Groq --> LC
+    LC --> Insights[Structured Medical Insights]
+    Insights --> App
+    style App fill:#020617,stroke:#00f2ff,stroke-width:2px,color:#fff
+    style LC fill:#020617,stroke:#aa3bff,stroke-width:2px,color:#fff
+    style Groq fill:#020617,stroke:#ff3b7c,stroke-width:2px,color:#fff`,
     details: [
       "Business Problem: Medical professionals and patients struggle to rapidly synthesize dense, complex clinical documentation.",
       "Techniques Used: Private Retrieval-Augmented Generation (RAG) ensuring data confidentiality and targeted LLM summarization.",
@@ -82,7 +155,20 @@ const projectsData = {
     desc: "A robust microservices-based administrative platform optimizing university operations. Streamlines real-time faculty and student data management across departments.",
     tech: ["React", "FastAPI", "MySQL", "Docker"],
     github: "https://github.com/Neelanjan2448040/campus-ai",
-    architecture: "React Frontend -> FastAPI Backend -> MySQL Database -> Docker Orchestration",
+    mermaidGraph: `graph TD
+    Admin([Administrator]) --> React[React Frontend]
+    Student([Student]) --> React
+    Faculty([Faculty]) --> React
+    React --> API[FastAPI Backend Gateway]
+    API --> Auth[Auth Microservice]
+    API --> AdminService[Admin Service]
+    API --> StudentService[Student Service]
+    Auth --> MySQL[(MySQL Database)]
+    AdminService --> MySQL
+    StudentService --> MySQL
+    style React fill:#020617,stroke:#00f2ff,stroke-width:2px,color:#fff
+    style API fill:#020617,stroke:#aa3bff,stroke-width:2px,color:#fff
+    style MySQL fill:#020617,stroke:#ff3b7c,stroke-width:2px,color:#fff`,
     details: [
       "Business Problem: Fragmented, legacy university systems create data silos and inefficient administrative operations.",
       "Techniques Used: Distributed microservices architecture, RESTful API design, and container orchestration.",
@@ -97,7 +183,16 @@ const projectsData = {
     tech: ["Streamlit", "ML", "ANN", "TabNet"],
     github: "https://github.com/Neelanjan2448040/AttriNet-Predictive-HR-Attrition-Intelligence-",
     demo: "https://ecppvduzspjv38swewmysm.streamlit.app/",
-    architecture: "Raw HR Data -> Feature Engineering Pipeline -> ANN / TabNet Ensemble -> Interactive Dashboard",
+    mermaidGraph: `graph TD
+    HR([HR Manager]) --> Dash[Interactive Dashboard]
+    Dash --> Ensemble[Ensemble Model<br/>ANN & TabNet]
+    Ensemble --> Feat[Feature Engineering Pipeline]
+    Feat --> Raw[(Raw HR Data)]
+    Ensemble --> Sim[What-If Simulation Engine]
+    Sim --> Dash
+    style Dash fill:#020617,stroke:#00f2ff,stroke-width:2px,color:#fff
+    style Ensemble fill:#020617,stroke:#aa3bff,stroke-width:2px,color:#fff
+    style Sim fill:#020617,stroke:#ff3b7c,stroke-width:2px,color:#fff`,
     details: [
       "Business Problem: High employee turnover is costly. HR leadership lacks predictive tools to foresee and mitigate attrition risks proactively.",
       "Techniques Used: Deep learning ensembles (Artificial Neural Networks and TabNet) and complex feature engineering.",
@@ -143,34 +238,12 @@ const ProjectDetails = () => {
             className="glass details-card architecture"
           >
             <h3><Cpu size={24} /> System Architecture</h3>
-            <div className="arch-flow">
-              {project.architecture.split(' -> ').map((step, i, arr) => {
-                const colors = ['#00f2ff', '#aa3bff', '#ff3b7c', '#ffd700', '#00ffaa'];
-                const color = colors[i % colors.length];
-                return (
-                  <div key={i} className="arch-step-container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
-                    <div 
-                      className="arch-step" 
-                      style={{ 
-                        borderColor: color, 
-                        boxShadow: `0 4px 15px ${color}22`,
-                        background: `linear-gradient(145deg, rgba(15,23,42,0.8), ${color}15)`,
-                        transition: 'all 0.3s ease'
-                      }}
-                      onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.02)'; e.currentTarget.style.boxShadow = `0 8px 25px ${color}44`; }}
-                      onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = `0 4px 15px ${color}22`; }}
-                    >
-                      <span style={{ color: color, fontWeight: '700', display: 'block', marginBottom: '0.4rem', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '1px' }}>Phase {i + 1}</span> 
-                      {step}
-                    </div>
-                    {i < arr.length - 1 && (
-                      <div className="arch-arrow" style={{ color: color, margin: '0.8rem 0', fontSize: '1.8rem', animation: 'float 2s infinite ease-in-out' }}>
-                        ↓
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
+            <div className="arch-flow" style={{ width: '100%', overflow: 'hidden' }}>
+              {project.mermaidGraph ? (
+                <Mermaid chart={project.mermaidGraph} id={project.title} />
+              ) : (
+                <p>Architecture details coming soon.</p>
+              )}
             </div>
           </motion.div>
 

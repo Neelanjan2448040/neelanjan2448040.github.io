@@ -18,7 +18,7 @@ const About = () => {
           >
             <h3>Professional Summary</h3>
             <p>I am a Data Analytics and AI professional focused on Machine Learning, Generative AI, and Financial Analytics. I build intelligent solutions that transform complex data into actionable insights.</p>
-            <p style={{ marginTop: '1rem' }}>Currently, I work in Financial Planning & Analysis (FP&A) at Palo Alto Networks, driving strategic business decisions through forecasting, variance analysis, and reporting automation.</p>
+            <p style={{ marginTop: '1rem' }}>Currently, I work as a Financial Planning & Analysis Analyst (FP&A) at Palo Alto Networks, driving strategic business decisions through forecasting, variance analysis, and reporting automation.</p>
             <p style={{ marginTop: '1rem' }}>Passionate about leveraging AI and data to solve real-world problems, I continuously build scalable applications, NLP systems, and intelligent dashboards.</p>
           </motion.div>
         </div>
