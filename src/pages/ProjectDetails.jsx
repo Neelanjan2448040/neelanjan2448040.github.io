@@ -144,12 +144,33 @@ const ProjectDetails = () => {
           >
             <h3><Cpu size={24} /> System Architecture</h3>
             <div className="arch-flow">
-              {project.architecture.split(' -> ').map((step, i, arr) => (
-                <div key={i} className="arch-step-container">
-                  <div className="arch-step">{step}</div>
-                  {i < arr.length - 1 && <div className="arch-arrow">↓</div>}
-                </div>
-              ))}
+              {project.architecture.split(' -> ').map((step, i, arr) => {
+                const colors = ['#00f2ff', '#aa3bff', '#ff3b7c', '#ffd700', '#00ffaa'];
+                const color = colors[i % colors.length];
+                return (
+                  <div key={i} className="arch-step-container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
+                    <div 
+                      className="arch-step" 
+                      style={{ 
+                        borderColor: color, 
+                        boxShadow: `0 4px 15px ${color}22`,
+                        background: `linear-gradient(145deg, rgba(15,23,42,0.8), ${color}15)`,
+                        transition: 'all 0.3s ease'
+                      }}
+                      onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.02)'; e.currentTarget.style.boxShadow = `0 8px 25px ${color}44`; }}
+                      onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = `0 4px 15px ${color}22`; }}
+                    >
+                      <span style={{ color: color, fontWeight: '700', display: 'block', marginBottom: '0.4rem', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '1px' }}>Phase {i + 1}</span> 
+                      {step}
+                    </div>
+                    {i < arr.length - 1 && (
+                      <div className="arch-arrow" style={{ color: color, margin: '0.8rem 0', fontSize: '1.8rem', animation: 'float 2s infinite ease-in-out' }}>
+                        ↓
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </div>
           </motion.div>
 
