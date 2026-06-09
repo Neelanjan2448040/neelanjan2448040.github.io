@@ -38,7 +38,6 @@ const Navbar = ({ theme, toggleTheme }) => {
         </ul>
 
         <div className="nav-actions">
-          <a href="/Resume.pdf" target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ padding: '0.5rem 1.2rem', fontSize: '0.9rem', marginRight: '0.5rem' }}>Download CV</a>
           <a href="#contact" className="btn-nav">Let's Talk</a>
           <button className="mobile-toggle" onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? <X size={24} /> : <Menu size={24} />}
