@@ -1,42 +1,48 @@
 import { motion } from 'framer-motion';
-import { Cpu, Code, BarChart3, Terminal, Database, Cloud, Compass } from 'lucide-react';
+import { Cpu, Code, BarChart3, Terminal, Database, Cloud, Compass, Briefcase, PieChart } from 'lucide-react';
 
 const skillCategories = [
   {
-    title: "ML/AI",
-    icon: <Cpu size={24} />,
-    skills: ["Large Language Models", "RAG Architecture", "Neural Networks / GANs", "Natural Language Processing", "Computer Vision", "Generative AI", "Scikit-Learn", "TensorFlow/PyTorch"],
+    title: "Programming & Development",
+    icon: <Code size={24} />,
+    skills: ["Python", "SQL", "R", "JavaScript", "HTML", "Flask", "FastAPI", "Streamlit"],
     delay: 0
   },
   {
-    title: "Programming",
-    icon: <Code size={24} />,
-    skills: ["Python (Advanced)", "SQL / PostgreSQL", "R Programming", "JavaScript / ES6+"],
+    title: "AI & Machine Learning",
+    icon: <Cpu size={24} />,
+    skills: ["Machine Learning", "Deep Learning", "NLP", "Generative AI", "LLMs", "RAG", "LangChain", "Vector Databases", "Recommendation Systems"],
     delay: 0.1
   },
   {
-    title: "Data Tools",
+    title: "Data Analytics & BI",
     icon: <BarChart3 size={24} />,
-    skills: ["Pandas / NumPy", "Power BI / Tableau", "Matplotlib", "Seaborn"],
+    skills: ["Data Analytics", "Business Analytics", "Financial Analytics", "Statistical Analysis", "Forecasting", "Predictive Analytics", "Business Intelligence", "Data Visualization"],
     delay: 0.2
   },
   {
-    title: "Backend",
-    icon: <Terminal size={24} />,
-    skills: ["FastAPI", "Flask", "Node.js", "Express"],
+    title: "Visualization Tools",
+    icon: <PieChart size={24} />,
+    skills: ["Tableau", "Power BI", "Plotly", "Matplotlib"],
     delay: 0.3
   },
   {
     title: "Databases",
     icon: <Database size={24} />,
-    skills: ["MySQL", "PostgreSQL", "MongoDB", "Redis", "FAISS (Vector DB)"],
+    skills: ["MySQL", "MongoDB", "SQLite"],
     delay: 0.4
   },
   {
-    title: "Cloud",
+    title: "Cloud, DevOps & Tools",
     icon: <Cloud size={24} />,
-    skills: ["AWS (Basic)", "Docker", "Git / GitHub", "Nginx", "Vercel", "Postman"],
+    skills: ["Git", "GitHub", "Docker", "REST APIs", "Cloud-Based AI Applications"],
     delay: 0.5
+  },
+  {
+    title: "Finance & FP&A",
+    icon: <Briefcase size={24} />,
+    skills: ["Financial Planning & Analysis (FP&A)", "Variance Analysis", "Forecast Validation", "Financial Reporting", "Business Performance Analysis", "KPI Monitoring", "Stakeholder Reporting"],
+    delay: 0.6
   }
 ];
 

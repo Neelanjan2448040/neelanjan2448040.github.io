@@ -4,55 +4,63 @@ import { Code, ExternalLink } from 'lucide-react';
 
 const projects = [
   {
+    title: "Financial Econometrics Dashboard",
+    emoji: "📈",
+    desc: "A scalable financial analytics platform built to perform variance analysis, time-series forecasting, and automated KPI monitoring for real-time business decision-making.",
+    tech: ["Python", "Streamlit", "Plotly", "Forecasting"],
+    github: "https://github.com/Neelanjan2448040",
+    delay: 0
+  },
+  {
     title: "PaperScout+",
     emoji: "📄",
-    desc: "An AI-powered academic paper recommendation engine that aggregates scholarly databases like PubMed, arXiv, and CrossRef.",
-    tech: ["Python", "Streamlit", "NLP", "Semantic"],
+    desc: "An enterprise-grade AI recommendation engine aggregating academic databases. Solves the problem of information overload with advanced NLP, improving research efficiency significantly.",
+    tech: ["Python", "Streamlit", "NLP", "Semantic Search"],
     github: "https://github.com/Neelanjan2448040/PaperScout-Topic-Aware-Academic-Paper-Recommender",
     demo: "https://paperscout-topic-aware-academic-paper-recommender.streamlit.app/",
-    delay: 0
+    delay: 0.1
   },
   {
     title: "NutriSage",
     emoji: "🥗",
-    desc: "A multi-modal AI nutrition assistant that combines computer vision and NLP to analyze food images.",
+    desc: "A multimodal computer vision and RAG-powered nutrition assistant providing real-time dietary insights. Drives user value by delivering accurate, personalized macro-nutrient analysis.",
     tech: ["RAG", "EffNet", "Qwen 2.5", "FAISS"],
     github: "https://github.com/Aaditya235-design/NutriSage",
-    delay: 0.1
+    delay: 0.2
   },
   {
     title: "LakshyaAI",
     emoji: "🎯",
-    desc: "An AI-powered internship portal designed to streamline career opportunities using machine learning.",
+    desc: "A highly scalable AI recruitment platform automating candidate screening and role matching using vector search, reducing administrative screening time by over 50%.",
     tech: ["Python", "ML", "NLP", "FAISS"],
     github: "https://github.com/Neelanjan2448040/LakshayAI",
-    delay: 0.2
+    delay: 0.3
   },
   {
     title: "MediGuide-AI",
     emoji: "🏥",
-    desc: "A premium intelligent healthcare assistant using RAG pipelines for medical document analysis.",
+    desc: "A secure, privacy-focused medical document analyzer utilizing private LLM RAG pipelines. Empowers clinical workflows with near-instantaneous medical insights and summarization.",
     tech: ["RAG", "LangChain", "Groq", "Streamlit"],
     github: "https://github.com/Neelanjan2448040/MediGuide-AI",
     demo: "https://mediguide-ai-5c6mvgqmktcwkwvtuckwhn.streamlit.app/",
-    delay: 0.3
+    delay: 0.4
   },
   {
     title: "Campus AI",
     emoji: "🏫",
-    desc: "An enterprise-grade AI-powered campus management platform for student and faculty administration.",
+    desc: "A robust microservices-based administrative platform optimizing university operations. Streamlines real-time faculty and student data management across departments.",
     tech: ["React", "FastAPI", "MySQL", "Docker"],
     github: "https://github.com/Neelanjan2448040/campus-ai",
-    delay: 0.4
+    delay: 0.5
   },
   {
     title: "AttriNet",
     emoji: "👨‍💼",
-    desc: "An AI-powered HR analytics platform for employee attrition prediction featuring interactive dashboards.",
+    desc: "An advanced HR intelligence dashboard predicting employee attrition with 85%+ accuracy using deep learning. Equips managers with actionable insights to simulate retention strategies.",
     tech: ["Streamlit", "ML", "ANN", "TabNet"],
     github: "https://github.com/Neelanjan2448040/AttriNet-Predictive-HR-Attrition-Intelligence-",
     demo: "https://ecppvduzspjv38swewmysm.streamlit.app/",
-    delay: 0.5
+    delay: 0.6
   }
 ];
 

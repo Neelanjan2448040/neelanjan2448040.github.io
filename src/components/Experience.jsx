@@ -2,6 +2,17 @@ import Timeline from './Timeline';
 
 const experienceData = [
   {
+    company: "Palo Alto Networks (PANW)",
+    role: "Financial Planning & Analysis (FP&A)",
+    period: "Current",
+    description: [
+      "Supporting financial planning, forecasting, and business performance analysis.",
+      "Working with financial reports, operational metrics, and business data.",
+      "Collaborating with stakeholders to understand business drivers and financial trends.",
+      "Assisting in process improvement and reporting automation initiatives."
+    ]
+  },
+  {
     company: "GenLab",
     role: "Product Developer Intern",
     period: "Feb 2026 – March 2026",
